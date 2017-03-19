@@ -8,7 +8,9 @@
 
 
 
-// Listing 19-10: Asking permission to the user
+
+// Listing 19-14: Assigning the ViewController class as the delegate
+
 import UIKit
 import UserNotifications
 
@@ -17,11 +19,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey : Any]? = nil) -> Bool {
-        
         let notificationcenter = UNUserNotificationCenter.current()
         notificationcenter.requestAuthorization(options: [.alert, .sound], completionHandler: { (granted, error) in
             if granted && error == nil {
-                print("Permission Granted")
+                notificationcenter.delegate = self.window?.rootViewController as! ViewController
             }
         })
         return true
