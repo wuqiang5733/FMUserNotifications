@@ -21,6 +21,8 @@ class ViewController: UIViewController {
         let content = UNMutableNotificationContent()
         content.title = "Reminder"
         content.body = messageField.text!
+        // Listing 19-12: Scheduling a notification with sound
+        content.sound = UNNotificationSound(named: "alarm.mp3")
         
         let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 8, repeats: false)
         
